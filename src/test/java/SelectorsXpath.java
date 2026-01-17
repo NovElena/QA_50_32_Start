@@ -85,6 +85,46 @@ public class SelectorsXpath {
 
     }
 
+    @Test
+    public void iLCarroXpathTest() {
+        driver.manage().window().maximize();
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.get("https://ilcarro.web.app/search");
+        WebElement btnLogin = driver.findElement(By
+                .xpath("//a[@ng-reflect-router-link='login']"));
+        btnLogin.click();
+        pause(3);
+        // BYclassName "ng-dirty"
+        // Xpath //*[@class='ng-dirty ng-valid ng-touched']
+        WebElement fieldEmail = driver.findElement(By
+                .xpath("//input[@id='email']"));
+        fieldEmail.sendKeys("sima_simonova370@gmail.com");
+        pause(3);
+        WebElement fieldPassword = driver.findElement(By
+                .xpath("//*[@formcontrolname='password']"));
+        //   //form/div[last()]/input  вниз к ребенку
+        fieldPassword.sendKeys("BSas124!");
+        pause(3);
+        WebElement btnYalla = driver.findElement(By
+                .xpath("//button[text()='Y’alla!']"));
+        //  //button[start-with(text(),'Y’a')]
+        btnYalla.click();
+        pause(3);
+        WebElement btnOk = driver.findElement(By
+                .xpath("//button[@class='positive-button ng-star-inserted']"));
+        btnOk.click();
+        pause(3);
+        WebElement btnLogout = driver.findElement(By
+                .xpath("//a[contains(text(), 'Logout')]"));
+        btnLogout.click();
+        pause(3);
+        driver.quit();
+        //  //input[@id='password']/../.. вверх по дереву
+        pause(10);
+    }
+
+
     public void pause(int time){
         try {
             Thread.sleep(time *1000L);
